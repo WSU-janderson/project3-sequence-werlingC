@@ -4,6 +4,9 @@
 
 #ifndef SEQUENCE_SEQUENCENODE_H
 #define SEQUENCE_SEQUENCENODE_H
+#include <string>
+
+using namespace std;
 
 class SequenceNode {
 public: // to make it easier, we can make the data members public so we don't need getters and setters
@@ -16,7 +19,7 @@ public: // to make it easier, we can make the data members public so we don't ne
     {}
     /// parameterized constructor, next and prev are set to nullptr and the
     /// node's element is set to the given value
-    SequenceNode(std::string item) : next(nullptr), prev(nullptr), item(item)
+    SequenceNode(string item) : next(nullptr), prev(nullptr), item(item)
     {}
 };
 

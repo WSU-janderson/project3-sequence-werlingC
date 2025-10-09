@@ -3,3 +3,14 @@
 //
 
 #include "SequenceNode.h"
+#include <string>
+
+using namespace std;
+
+//Constructor with parameters
+SequenceNode::SequenceNode(string item)
+{
+    this->item = item;
+    next = nullptr;
+    prev = nullptr;
+}
