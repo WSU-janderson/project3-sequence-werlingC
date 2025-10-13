@@ -30,11 +30,14 @@ Sequence::~Sequence()
 // Creates a (deep) copy of sequence s
 Sequence::Sequence(const Sequence& s)
 {
-    headNode = s.headNode;
-    tailNode = s.tailNode;
-    for (int i =0; i < (s.listSize - 1); i++)
+    //starts the current node as the headNode of s
+    SequenceNode* current = s.headNode;
+    //loops through the sequence s and uses push_back() to put the value in current into the new sequence
+    //then changes current to be the next node until the whole list has been gone through
+    for (int i=0; i < (s.listSize - 1); i++)
     {
-
+        push_back(current->item);
+        current = current->next;
     }
 }
 
