@@ -1,6 +1,7 @@
 
 #include <string>
 #include "SequenceNode.h"
+#include <cstddef>
 
 class Sequence
 {
