@@ -17,6 +17,7 @@ public: // to make it easier, we can make the data members public so we don't ne
     //default constructor, ensure next and prev are nullptr
     SequenceNode() : next(nullptr), prev(nullptr)
     {}
+
     /// parameterized constructor, next and prev are set to nullptr and the
     /// node's element is set to the given value
     SequenceNode(string item) : next(nullptr), prev(nullptr), item(item)

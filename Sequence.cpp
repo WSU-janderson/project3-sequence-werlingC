@@ -26,4 +26,37 @@ Sequence::Sequence(const Sequence& s)
 }
 
 
+void Sequence::push_back(string item)
+{
+    //creates a new node that's previous pointer will be the tailNode and next pointer will be null
+    SequenceNode* newNode = new SequenceNode(item);
+    newNode->prev = tailNode;
+    newNode->next = nullptr;
+
+    //if the sequence is empty, the node will be both the head and tail
+    if (empty())
+    {
+        headNode = newNode;
+    }else
+    {
+        //sets the tail old tail node's next node to newNode
+        tailNode->next = newNode;
+    }
+
+    //set the new tail node to newNode
+    tailNode = newNode;
+    listSize++;
+
+}
+
+//returns true if there are no nodes in the sequence
+bool Sequence::empty() const
+{
+    if (listSize == 0)
+    {
+        return true;
+    }
+}
+
+
 
