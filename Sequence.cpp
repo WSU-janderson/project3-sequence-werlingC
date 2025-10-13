@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "SequenceNode.h"
+#include <stdexcept>
 
 using namespace std;
 
@@ -89,6 +90,27 @@ void Sequence::pop_back()
     }
 }
 
+//returns the value in stored in the first node of the sequence
+string Sequence::front() const
+{
+    //checks if the sequence is empty and throws an exception if so
+    if (empty())
+    {
+        throw out_of_range("front() can not be called on an empty sequence");
+    }
+    return headNode->item;
+}
+
+//returns the value stored in the last node of the sequence
+string Sequence::back() const
+{
+    //checks if the sequence is empty and throws an exception if so
+    if (empty())
+    {
+        throw out_of_range("back() can not be called on an empty sequence");
+    }
+    return tailNode->item;
+}
 
 //returns true if there are no nodes in the sequence
 bool Sequence::empty() const
@@ -99,6 +121,12 @@ bool Sequence::empty() const
     }else{
         return false;
     }
+}
+
+//returns the list's size
+size_t Sequence::size() const
+{
+    return listSize;
 }
 
 
