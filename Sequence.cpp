@@ -50,6 +50,28 @@ Sequence& Sequence::operator=(const Sequence& s)
     }
 }
 
+//Overloads the [] operator to return a reference to a string at the given position
+string& Sequence::operator[](size_t position)
+{
+    //makes sure that they requested position is within bounds of the sequence
+    if (position >= size())
+    {
+        throw out_of_range("Index is out of bounds!");
+    }
+
+    SequenceNode* current = headNode;
+    for (int i  = 0; i < (size() - 1); i++)
+    {
+        if (i == position)
+        {
+            return current->item;
+        }else
+        {
+            current = current->next;
+        }
+    }
+}
+
 Sequence::Sequence(const Sequence& s)
 {
     //starts the current node as the headNode of s
