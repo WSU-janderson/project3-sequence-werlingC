@@ -54,7 +54,7 @@ Sequence& Sequence::operator=(const Sequence& s)
 string& Sequence::operator[](size_t position)
 {
     //makes sure that they requested position is within bounds of the sequence
-    if (position >= size())
+    if (position >= size() || position < 0)
     {
         throw out_of_range("Index is out of bounds!");
     }
@@ -136,6 +136,49 @@ void Sequence::pop_back()
         listSize--;
     }
 }
+
+//Adds an element to the Sequence at a specified position
+void Sequence::insert(size_t position, string value)
+{
+    //checks to make sure the specified position is within bounds
+    if (position > size() || position < 0)
+    {
+        throw out_of_range("Index is out of range");
+    }
+
+    //checks if the insert position is at the end of a list and does a pushback if so
+    if (position == size())
+    {
+        push_back(value);
+        return;
+    }
+
+    //checks if the node is at the beginning of the list and makes it the new head node if so
+    if (position == 0)
+    {
+        SequenceNode* newNode = new SequenceNode(value);
+        newNode->next = headNode;
+        headNode->prev = newNode;
+        headNode = newNode;
+    }else
+    {
+        //finds the target position and places the new node there
+        SequenceNode* current = headNode;
+        for (int i = 0; i < position; i++)
+        {
+            current = current->next;
+        }
+        //makes a new node and links it the the next and previous nodes
+        SequenceNode* newNode = new SequenceNode(value);
+        newNode->prev = current->prev;
+        newNode->next = current;
+        //links the nodes before and after the insertion location to the new node
+        current->prev->next = newNode;
+        current->prev = newNode;
+    }
+    listSize++;
+}
+
 
 //returns the value in stored in the first node of the sequence
 string Sequence::front() const
