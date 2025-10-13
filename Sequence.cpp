@@ -26,15 +26,37 @@ Sequence::~Sequence()
     }
 }
 
-//TODO: Finish the copy function once functions for adding and removing nodes are created
-// Creates a (deep) copy of sequence s
+//overlaods the equals operators so that sequences can be set equal to other sequences
+Sequence& Sequence::operator=(const Sequence& s)
+{
+    //check to make sure a self-assignment is not happening
+    if (this == &s)
+    {
+        return *this;
+    }
+
+    //clears the sequence
+    while (!empty())
+    {
+        pop_back();
+    }
+
+    //copys the elements from the sequence s into the sequence calling this function
+    SequenceNode* current = s.headNode;
+    for (int i  = 0; i < (s.size() - 1); i++)
+    {
+        push_back(current->item);
+        current = current->next;
+    }
+}
+
 Sequence::Sequence(const Sequence& s)
 {
     //starts the current node as the headNode of s
     SequenceNode* current = s.headNode;
     //loops through the sequence s and uses push_back() to put the value in current into the new sequence
     //then changes current to be the next node until the whole list has been gone through
-    for (int i=0; i < (s.listSize - 1); i++)
+    for (int i=0; i < (s.size() - 1); i++)
     {
         push_back(current->item);
         current = current->next;
