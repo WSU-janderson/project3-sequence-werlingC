@@ -1,4 +1,6 @@
 #include "Sequence.h"
+
+#include <iostream>
 #include <string>
 #include "SequenceNode.h"
 
@@ -13,13 +15,23 @@ Sequence::Sequence(size_t sz)
     listSize = sz;
 }
 
+//destructor of the Sequence class that deletes all nodes in the sequence when the sequence itself is deleted
+Sequence::~Sequence()
+{
+    //removes all nodes from the list
+    while (!empty())
+    {
+        pop_back();
+    }
+}
+
 //TODO: Finish the copy function once functions for adding and removing nodes are created
 // Creates a (deep) copy of sequence s
 Sequence::Sequence(const Sequence& s)
 {
     headNode = s.headNode;
     tailNode = s.tailNode;
-    for (int i =0; i < (listSize - 1); i++)
+    for (int i =0; i < (s.listSize - 1); i++)
     {
 
     }
@@ -38,8 +50,7 @@ void Sequence::push_back(string item)
     if (empty())
     {
         headNode = newNode;
-    }else
-    {
+    }else{
         //sets the tail old tail node's next node to newNode
         tailNode->next = newNode;
     }
@@ -59,15 +70,14 @@ void Sequence::pop_back()
         cout<<"No values to remove";
     }else
     {
-        Node* temp = tailNode;
+        SequenceNode* temp = tailNode;
 
         //checks if the list will become empty after this removal, meaning both the head and tail will be null
         if (listSize == 1)
         {
             headNode  = nullptr;
             tailNode = nullptr;
-        }else
-        {
+        }else{
             //if the list isn't about to be empty then tailNode reference needs to be updated and the new tail itself needs it next pointer to be null
             tailNode = tailNode->prev;
             tailNode->next = nullptr;
@@ -86,6 +96,8 @@ bool Sequence::empty() const
     if (listSize == 0)
     {
         return true;
+    }else{
+        return false;
     }
 }
 
