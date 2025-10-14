@@ -12,6 +12,7 @@
 
 using namespace std;
 
+
 int main() {
 
     //tests an empty sequence
@@ -32,18 +33,33 @@ int main() {
     cout << "Back value is:  " << s.back();
     */
 
-    //tests for adding elements to the sequence
+    //tests for adding elements to the sequence  by adding four nodes whose values are strings of the names of various fruits
     s.push_back("Apple");
     s.push_back("Banana");
     s.push_back("Peach");
     s.push_back("Pineapple");
 
-    cout << "\n\nSequence contains: ";
+    cout << "\n\npush_back() test" << endl << "Sequence contains: ";
     for (size_t i = 0; i < s.size(); i++)
     {
-        cout << endl << i << ".) " << s[i];
+        cout << endl << i + 1 << ".) " << s[i];
     }
 
+    //tests insert() by  inserting an element at index 1
+    s.insert(1, "Grape");
+    cout << "\n\nInsert test" << endl << "Sequence contains: ";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
+
+    //test pop_back by remmoving the last node in the sequence which contains the value "pineapple"
+    s.pop_back();
+    cout << "\n\npop_back() test" << endl << "Sequence contains: ";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
 
     return 0;
 }
