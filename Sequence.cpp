@@ -301,10 +301,11 @@ SequenceNode* Sequence::getHeadNode()
 
 //outputs all elements in a sequence
 //Not a member of the Sequence class, but instead a friend function
-ostream& operator<<(ostream& os, const Sequence& s)
+ostream& operator<<(ostream& os, Sequence& s)
 {
     os << "<";
-    SequenceNode* current = s.getHeadNode();
+    SequenceNode* current;
+    current = s.getHeadNode();
     while (current != nullptr)
     {
         //gets the current item and then adds a comma after it if it is not the last element
