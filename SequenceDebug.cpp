@@ -115,9 +115,38 @@ int main() {
         cout << endl << i + 1 << ".) " << s3[i];
     }
 
+    //tests the erase functions
+    s.push_back("Orange");
+    s.push_back("Lemon");
+    s.push_back("Lime");
+    s.push_back("Strawberry");
+    s.push_back("Starfruit");
 
+    //confirms that the new elements have been added
+    cout << "\n\nConfirming additions" << endl << "Sequence contains: ";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
 
+    //Removes Banana individually and lemon - strawberry
+    s.erase(2);
+    s.erase(4,3);
 
+    //confirms the removals
+    cout << "\n\nConfirming removals" << endl << "Sequence contains: ";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
+
+    //tests the clear() function
+    s.clear();
+    cout << "\n\nConfirming removals" << endl << "Sequence contains: ";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
 
     return 0;
 }
