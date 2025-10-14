@@ -67,21 +67,22 @@ int main() {
     cout << "\n\n= operator test" << endl << "Sequence 2 contains: ";
     for (size_t i = 0; i < s2.size(); i++)
     {
-        cout << endl << i + 1 << ".) " << s[i];
+        cout << endl << i + 1 << ".) " << s2[i];
     }
 
     //Follow-up test that ensures that s and s2 are separate sequences by modifying sequence 2
     s2.pop_back();
-    s2.insert(2, "Durian");
-    cout << "= operator part 2 test" << endl << "Sequence contains: ";
+    s2.insert(1, "Durian");
+
+    cout << "\n\n= operator part 2 test" << endl << "Sequence contains: ";
     for (size_t i = 0; i < s.size(); i++)
     {
         cout << endl << i + 1 << ".) " << s[i];
     }
-    cout << endl << "Sequence 2 contains: ";
+    cout << endl << "\nSequence 2 contains: ";
     for (size_t i = 0; i < s2.size(); i++)
     {
-        cout << endl << i + 1 << ".) " << s[i];
+        cout << endl << i + 1 << ".) " << s2[i];
     }
 
 

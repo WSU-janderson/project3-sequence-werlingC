@@ -48,6 +48,7 @@ Sequence& Sequence::operator=(const Sequence& s)
         push_back(current->item);
         current = current->next;
     }
+    return *this;
 }
 
 //Overloads the [] operator to return a reference to a string at the given position
