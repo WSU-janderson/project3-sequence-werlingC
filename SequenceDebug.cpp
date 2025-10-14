@@ -86,5 +86,20 @@ int main() {
     }
 
 
+    //tests the front(), back(), empty(), and size() methods on a Sequence that has elements
+    cout << "\n\nFirst element contains: " << s.front() << endl;
+    cout << "Last element contains: " << s.back() << endl;
+    cout << "The sequence contains " << s.size() << " elements";
+    if (s.empty())
+    {
+        cout << "\nEmpty sequence";
+    }else
+    {
+        cout << "\nNon-empty sequence";
+    }
+
+
+
+
     return 0;
 }
