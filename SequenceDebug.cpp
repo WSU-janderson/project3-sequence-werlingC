@@ -7,11 +7,43 @@
  * SequenceDebug from the drop-down menu next to the Build (hammer icon) if it is on SequenceTestHarness
  */
 #include <iostream>
+#include "Sequence.h"
+
 
 using namespace std;
 
 int main() {
-    cout << "Your project is ready to go!" << endl;
+
+    //tests an empty sequence
+    Sequence s = Sequence();
+    //tests if the size() and empty() functions correctly identify an empty function
+    cout << "Sequence size: " << s.size();
+    if (s.empty())
+    {
+        cout << "\nEmpty sequence";
+    }else
+    {
+        cout << "\nNon-empty sequence";
+    }
+    //Tests for error throwing, since front() and back() can't operate on an empty sequence
+    //NEEDS TO BE COMMENTED OUT WHEN NOT TESTING FOR ERROR CATCHING
+    /*
+    cout << "Front value is:  " << s.front();
+    cout << "Back value is:  " << s.back();
+    */
+
+    //tests for adding elements to the sequence
+    s.push_back("Apple");
+    s.push_back("Banana");
+    s.push_back("Peach");
+    s.push_back("Pineapple");
+
+    cout << "\n\nSequence contains: ";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        cout << endl << i << ".) " << s[i];
+    }
+
 
     return 0;
 }
