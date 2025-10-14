@@ -58,5 +58,20 @@ public:
     // Return the number of elements in the sequence.
     size_t size() const;
 
+    // sequence is released, resetting the sequence to an empty state that can have
+    // items re-inserted.
+    void clear();
 
+    // The item at position is removed from the sequence, and the memory is released. If called with an invalid position throws an exception.
+    void erase(size_t position);
+
+    // The items in the sequence at ( position ... (position + count - 1) ) are
+    // deleted and their memory released. If called with invalid position and/or  count throws an exception.
+    void erase(size_t position, size_t count);
+
+    // Outputs all elements (ex: <4, 8, 15, 16, 23, 42>) as a string to the output
+    // stream. This is *not* a method of the Sequence class, but instead it is a friend function
+    friend ostream& operator<<(ostream& os, const Sequence& s);
+
+    SequenceNode* getHeadNode();
 };

@@ -226,5 +226,98 @@ size_t Sequence::size() const
     return listSize;
 }
 
+//clears all elements in a sequence
+void Sequence::clear()
+{
+    //Calls pop_back while the list is not empty
+    while (!empty())
+    {
+        pop_back();
+    }
+}
 
+//Clear all elements in the list
+void Sequence::erase(size_t position)
+{
+    //Makes sure the given position is within bounds
+    if (position >= listSize)
+    {
+        throw out_of_range("Index is out of bounds!");
+    }
+
+    //In the situation that the index is at the end, it would be easier to use pop_back since it was already made to handle that
+    if (position == listSize - 1)
+    {
+        pop_back();
+        return;
+    }
+
+    //handles the case where the position is 0. The head node will need to be changed.
+    if (position == 0)
+    {
+        SequenceNode* temp = headNode;
+        headNode = headNode->next;
+        headNode->prev = nullptr;
+        delete temp;
+    }else
+    {
+        //handles every other case where a node other than the head or tail are deleted.
+        SequenceNode* current = headNode;
+        for (size_t i = 0; i < position; i++)
+        {
+            current = current->next;
+        }
+
+        //Once they program has located the node to be deleted, it is deleted
+        //The two nodes around it will now be linked to each other to 'fill the gap'
+        current->prev->next = current->next;
+        current->next->prev = current->prev;
+        delete current;
+    }
+    listSize--;
+}
+
+//erases a range of elements defined by a starting point, and how many elements after that.
+void Sequence::erase(size_t position, size_t count)
+{
+    //validates that the orignal position and the range after will all be in bounds
+    if ((position >= listSize) || (position + count > listSize))
+    {
+        throw out_of_range("Index range is out of bounds!");
+    }
+
+    //calls erase for each element in the range
+    //since each erase should shift the sequence down, it can be called on the same position count times
+    for (size_t i = 0; i < count; i++)
+    {
+        erase(position);
+    }
+}
+
+SequenceNode* Sequence::getHeadNode()
+{
+    return headNode;
+}
+
+//outputs all elements in a sequence
+//Not a member of the Sequence class, but instead a friend function
+ostream& operator<<(ostream& os, const Sequence& s)
+{
+    os << "<";
+    SequenceNode* current = s.getHeadNode();
+    while (current != nullptr)
+    {
+        //gets the current item and then adds a comma after it if it is not the last element
+        os << current->item;
+        if (current->next != nullptr)
+        {
+            os << ", ";
+        }
+        //iterates to the next node
+        current = current->next;
+    }
+    os << ">";
+    return os;
+
+}
 
