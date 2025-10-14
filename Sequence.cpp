@@ -303,9 +303,9 @@ SequenceNode* Sequence::getHeadNode()
 //Not a member of the Sequence class, but instead a friend function
 ostream& operator<<(ostream& os, Sequence& s)
 {
+    //Starts the stream with '<' and then assigns the headNode as the current node, and gets all values from there onward.
     os << "<";
-    SequenceNode* current;
-    current = s.getHeadNode();
+    SequenceNode* current = s.getHeadNode();
     while (current != nullptr)
     {
         //gets the current item and then adds a comma after it if it is not the last element
@@ -319,6 +319,5 @@ ostream& operator<<(ostream& os, Sequence& s)
     }
     os << ">";
     return os;
-
 }
 
