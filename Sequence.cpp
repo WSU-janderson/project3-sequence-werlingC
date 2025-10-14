@@ -73,13 +73,19 @@ string& Sequence::operator[](size_t position)
     }
 }
 
+//copy constructor that copys all values from one sequence into a new one
 Sequence::Sequence(const Sequence& s)
 {
+
+    //initializes data fields
+    headNode = nullptr;
+    tailNode = nullptr;
+    listSize = 0;
     //starts the current node as the headNode of s
     SequenceNode* current = s.headNode;
     //loops through the sequence s and uses push_back() to put the value in current into the new sequence
     //then changes current to be the next node until the whole list has been gone through
-    for (int i=0; i < (s.size() - 1); i++)
+    for (int i=0; i < s.size(); i++)
     {
         push_back(current->item);
         current = current->next;
@@ -169,7 +175,7 @@ void Sequence::insert(size_t position, string value)
         {
             current = current->next;
         }
-        //makes a new node and links it the the next and previous nodes
+        //makes a new node and links it the next and previous nodes
         SequenceNode* newNode = new SequenceNode(value);
         newNode->prev = current->prev;
         newNode->next = current;

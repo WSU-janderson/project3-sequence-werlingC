@@ -98,6 +98,24 @@ int main() {
         cout << "\nNon-empty sequence";
     }
 
+    //tests the copy constructor by copying s2 and then editing s3 to show that they were initialy identical, but seperate
+    Sequence s3 = Sequence(s2);
+    cout << "\n\n= copy constructor test" << endl << "Sequence 3 contains: ";
+    for (size_t i = 0; i < s3.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s3[i];
+    }
+
+    //edits the contents of s2 to show that s2 and s3 are separate
+    s2.pop_back();
+    s2.pop_back();
+    cout << "\n\n= copy constructor test part 2" << endl << "Sequence contains: ";
+    for (size_t i = 0; i < s3.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s3[i];
+    }
+
+
 
 
 
