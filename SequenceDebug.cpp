@@ -53,13 +53,37 @@ int main() {
         cout << endl << i + 1 << ".) " << s[i];
     }
 
-    //test pop_back by remmoving the last node in the sequence which contains the value "pineapple"
+    //test pop_back by removing the last node in the sequence which contains the value "pineapple"
     s.pop_back();
     cout << "\n\npop_back() test" << endl << "Sequence contains: ";
     for (size_t i = 0; i < s.size(); i++)
     {
         cout << endl << i + 1 << ".) " << s[i];
     }
+
+    //tests they = operator
+    Sequence s2 = Sequence();
+    s2 = s;
+    cout << "\n\n= operator test" << endl << "Sequence 2 contains: ";
+    for (size_t i = 0; i < s2.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
+
+    //Follow-up test that ensures that s and s2 are separate sequences by modifying sequence 2
+    s2.pop_back();
+    s2.insert(2, "Durian");
+    cout << "= operator part 2 test" << endl << "Sequence contains: ";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
+    cout << endl << "Sequence 2 contains: ";
+    for (size_t i = 0; i < s2.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
+
 
     return 0;
 }

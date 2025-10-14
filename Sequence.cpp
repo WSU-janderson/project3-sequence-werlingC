@@ -43,7 +43,7 @@ Sequence& Sequence::operator=(const Sequence& s)
 
     //copys the elements from the sequence s into the sequence calling this function
     SequenceNode* current = s.headNode;
-    for (int i  = 0; i < (s.size() - 1); i++)
+    for (int i  = 0; i < s.size(); i++)
     {
         push_back(current->item);
         current = current->next;
