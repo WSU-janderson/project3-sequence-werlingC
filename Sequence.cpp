@@ -26,7 +26,7 @@ Sequence::~Sequence()
     }
 }
 
-//overlaods the equals operators so that sequences can be set equal to other sequences
+//overloads the equals operators so that sequences can be set equal to other sequences
 Sequence& Sequence::operator=(const Sequence& s)
 {
     //check to make sure a self-assignment is not happening
@@ -54,13 +54,13 @@ Sequence& Sequence::operator=(const Sequence& s)
 string& Sequence::operator[](size_t position)
 {
     //makes sure that they requested position is within bounds of the sequence
-    if (position >= size() || position < 0)
+    if (position > size() || position < 0)
     {
         throw out_of_range("Index is out of bounds!");
     }
 
     SequenceNode* current = headNode;
-    for (int i  = 0; i < (size() - 1); i++)
+    for (int i  = 0; i < size(); i++)
     {
         if (i == position)
         {
