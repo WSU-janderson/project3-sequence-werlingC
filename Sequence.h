@@ -30,7 +30,7 @@ public:
     // The return value is a reference to the item at index position in the
     // sequence. Throws an exception if the position is outside the bounds
     // of the sequence
-    std::string& operator[](size_t position);
+    std::string& operator[](size_t position) const;
 
 
     // The value of item is appended to the sequence.

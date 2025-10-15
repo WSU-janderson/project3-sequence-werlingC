@@ -10,10 +10,20 @@ using namespace std;
 // Creates an empty sequence (numElts == 0) or a sequence of numElts items indexed from 0 ... (numElts - 1).
 Sequence::Sequence(size_t sz)
 {
-    sz = 0;
     headNode = nullptr;
     tailNode = nullptr;
-    listSize = sz;
+    //if the given size is less than or equal to zero, size is set to zero (catches negatives) and the Sequence is empty
+    if (sz <= 0)
+    {
+        listSize = 0;
+    }else
+    {
+        //If the list size is greater than zero, creates sz number of 'empty' nodes
+        for (size_t i = 0; i < sz; i++)
+        {
+            push_back("");
+        }
+    }
 }
 
 //destructor of the Sequence class that deletes all nodes in the sequence when the sequence itself is deleted
@@ -52,7 +62,7 @@ Sequence& Sequence::operator=(const Sequence& s)
 }
 
 //Overloads the [] operator to return a reference to a string at the given position
-string& Sequence::operator[](size_t position)
+string& Sequence::operator[](size_t position) const
 {
     //makes sure that they requested position is within bounds of the sequence
     if (position > size() || position < 0)

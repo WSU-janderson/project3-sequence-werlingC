@@ -98,6 +98,14 @@ int main() {
         cout << "\nNon-empty sequence";
     }
 
+    //tests the bracket operators
+    s[2] = "Pomegranate";
+    cout << "\n\n= []operator test" << endl << "Sequence contains: ";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        cout << endl << i + 1 << ".) " << s[i];
+    }
+
     //tests the copy constructor by copying s2 and then editing s3 to show that they were initialy identical, but seperate
     Sequence s3 = Sequence(s2);
     cout << "\n\n= copy constructor test" << endl << "Sequence 3 contains: ";
