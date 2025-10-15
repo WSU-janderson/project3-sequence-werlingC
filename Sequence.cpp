@@ -18,6 +18,7 @@ Sequence::Sequence(size_t sz)
         listSize = 0;
     }else
     {
+        listSize = 0;
         //If the list size is greater than zero, creates sz number of 'empty' nodes
         for (size_t i = 0; i < sz; i++)
         {
